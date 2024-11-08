@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+/* 1. prompt 입력 "새로운 게시물을 입력하세요." 제목 내용 작성자
+  2. boardlist 배열 끝요소 추가
+  let boardinput= "4 입력제목 입력내용 입력작성자".split(' '); //함수 리턴값 타입 배열
+   boardinput[0];<-4
+  boardinput[1];<-입력제목
+  boardinput[2];<-입력내용
+  boardinput[3];<-입력장성자
+  boardlist[3] = boardinput;
+  3. ul,li 표현 출력-반복문, 배열함수 */
+ 
+// let boardlist=[[1,"제목1","내용1","작성자1"],[2,"제목2","내용2","작성자2"],[3,"제목3","내용3","작성자3"]];
+/* boardlist.push(prompt("새로운 게시물을 입력하세요.'순서, 제목, 내용, 작성자'")); */
+/* let boardinput=(prompt("새로운 게시물을 입력하세요.'순서, 제목, 내용, 작성자'띄어 쓰시오")).split(' ');
+boardlist[3] = boardinput;
+let i;
+let a1;
+for(i=0; i<=boardlist.length; i++){
+	a1+=`<ul><li>${boardlist[i]}</li></ul>`
+		if(i==boardlist.length - 1){break;} 
+}
+
+document.write(boardinput[0]);
+document.write(boardinput[1]);
+document.write(boardinput[2]);
+document.write(boardinput[3]);
+
+document.write(a1);  */
+
+/* let boardlist=[[1,"제목1","내용1","작성자1"],[2,"제목2","내용2","작성자2"],[3,"제목3","내용3","작성자3"]];
+let input = prompt("새로운 게시물을 입력하세요");
+let boardinput = input.split(' ');
+boardlist[3] = boardinput;
+let output = `<ul>`;
+for(let i=0; i<boardlist.length; i++){
+	output += `<li><ul>`;
+	for(let j =0; j<boardlist.length; j++){
+		output +=`<li>${boardlist[i][j]}</li>`;
+	}
+	output += `</ul></li>`;
+}
+output+= `</ul>`;
+document.write(output); */
+
+let boardlist=[[1,"제목1","내용1","작성자1"],[2,"제목2","내용2","작성자2"],[3,"제목3","내용3","작성자3"],[4,"제목4","내용4","작성자4"]];
+let input = prompt("새로운 게시물을 입력하세요");
+let boardinput = input.split(' ');
+
+boardinput.unshift(boardlist[boardlist.length-1][0]+1);// 배열 첫번째 위치 (0인덱스에 추가)
+
+boardlist.push(boardinput);// 배열 끝에 추가
+
+let output = `<ul>`;
+for(let i=0; i<boardlist.length; i++){
+	output += `<li><ul>`;
+	for(let j =0; j<boardlist.length; j++){
+		output +=`<li>${boardlist[i][j]}</li>`;
+	}
+	output += `</ul></li>`;
+}
+output+= `</ul>`;
+document.write(output);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+let boardlist=[
+	[1,"제목1","내용1","작성자1"],
+	[2,"제목2","내용2","작성자2"],
+	[3,"제목3","내용3","작성자3"],
+	[4,"제목4","내용4","작성자4"]
+	];
+
+function save(){
+let input = prompt("새로운 게시물을 입력하세요");
+let boardinput = input.split(' ');
+boardinput.unshift(boardlist[boardlist.length-1][0]+1);// 배열 첫번째 위치 (0인덱스에 추가)
+boardlist.push(boardinput);// 배열 끝에 추가
+}
+
+function print(){
+let output = `<ul>`;
+for(let i=0; i<boardlist.length; i++){
+	output += `<li><ul>`;
+	for(let j =0; j<boardlist.length; j++){
+		output +=`<li>${boardlist[i][j]}</li>`;
+	}
+	output += `</ul></li>`;
+}
+output+= `</ul>`;
+document.write(output);
+}
+//호출
+save();
+save();
+save();
+print();
+</script>
+</body>
+</html>
