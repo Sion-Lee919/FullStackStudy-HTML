@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+ 	$(document).ready( function(){ 
+ 		$("div").append("<h1>제목3</h1>"); //div 내부에 마지막에 추가
+ 		$("div").after("<h1>제목4</h1>"); //div 다음 위치에다가 추가
+ 		$("div").prepend("<h1>제목2</h1>"); //div 내부에 첫번째에 추가
+ 		$("div").before("<h1>제목1</h1>"); //div 전 위치에다가 추가
+ 	} );
+</script>
+</head>
+<body>
+<div style="border: 2px solid orange">원래 있던 내용</div>
+</body>
+</html>

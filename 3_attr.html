@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+ 	$(document).ready( function(){
+ 		//setter용도 (속성 접근)
+ 		//속성 1개만 지정
+ 		/* $('img:first').attr("src","http://localhost:8080/HTML1/images/html5.jpg");
+ 		$('img:first').attr("alt","html로고");
+ 		$('img:first').attr("width","200");
+ 		$('img:first').attr("heght","200"); */
+ 		
+ 		//여러개 속성을 한번에 지정
+ 		//attr/prop
+ 		$('img:first').prop({
+ 			"src" : "/HTML1/images/html5.jpg",
+ 			"alt" : "html로고",
+ 			"width":"200",
+ 			"heght":"200"
+ 		});
+ 		
+ 		$('img:first').css("border","3px solid green");
+ 		
+ 		alert($('img:first').prop('src'));//절대 url 해석
+ 		
+ 		$('img:eq(1)').attr("src","http://localhost:8080/HTML1/images/drinks.jpg");
+ 		
+ 		//getter용도 (읽어오는것)
+ 		$("#result").html(`첫번째 이미지의 src속성=${$('img:first').attr("src")}<br> 첫번째 이미지의 css boder속성=${$('img:first').css("border","3px solid green")}<br>`);
+ 		$("#result").html(`${$("#result").html()} 두번째 이미지의 src속성=${$('img:eq(1)').attr("src")}<br>`);
+ 		//$("#result").html(`${$("#result").html()} ${$("#result").html()}`);
+ 	} );
+</script>
+</head>
+<body>
+이미지1:<img>
+이미지2:<img>
+<div id="result"></div>
+</body>
+</html>

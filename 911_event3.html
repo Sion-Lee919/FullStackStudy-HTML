@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+ 	$(document).ready( function(){ 
+ 		$("#forminput").on('submit', function(ev){
+ 			
+ 		
+ 		//name 속성이 name인 태그
+ 		let name =$("input[name*=name]").val();
+ 		//입력값이 한글이여야 하고 조건 불만족시 submit 동작 못하게 하자
+ 		//  시작할때/^가-힣+한개이상$/끝날때
+ 		let namecondition = /^[가-힣]+$/g;
+ 		let namecondition2 = namecondition.test(name);//조건에 name 입력값 맞는지 검사
+ 		if(namecondition2 == false){
+ 			$("#result").html("이름은 한글로만 구성 가능합니다.<br>")
+ 			ev.preventDefault();
+ 		}//if
+ 		//name 속성이 title인 태그
+ 		//입력값이 'react',oracle,spring 중 하나여야하고 조건 불만족시 submit 동작 못하게 하자
+ 		let title = $("input[name*=title]").val();
+ 		if(title != 'react' && title != 'oracle' && title != 'spring'){
+ 			$("#result").append(title +"==>'react','oracle','spring'만 가능합니다.<br>")
+ 			ev.preventDefault();
+ 		}
+ 		
+ 	});//on
+ 	
+ 		
+ 		//그외에는 submit한다
+ 	} );
+</script>
+</head>
+<body>
+<form id="forminput" action="a.jsp">
+	사용자명 <input type=text name="name" ><br>
+	과정명 <input type=text name="title" ><br>
+	<input type=submit value="액션파일로이동">
+</form>
+<div id='result'></div>
+<div id='result2'></div>
+
+</body>
+</html>

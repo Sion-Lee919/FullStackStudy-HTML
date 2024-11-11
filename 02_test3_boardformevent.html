@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+ 	$(document).ready( function(){ 
+ 		//1번쨰 방법
+ 		/* $("#searchform").on('submit',function(e){
+ 			e.preventDefault();
+ 			
+ 			let output=[];
+ 			$('select option').each(function(index, item){
+ 				if($(item).prop('selected')==true){
+ 					output.push(`게시판종류 : ${$(item).val()}<br>`);
+ 				}
+ 				else{
+ 					//선택되지 않았을 떄
+ 				}
+ 			});
+ 			$('input[type=checkbox]:checked').each(function(index, item){
+ 				output.push(`검색항목 :${$(item).val()}<br>`);
+ 			});
+ 			output.push(`검색어 : ${$('input:text').val()}<br>`);
+ 			$('#result').html(output);
+ 		}); */
+
+ 		//2번쨰 방법
+ 		/*  $("#searchform").on('submit',function(e){
+			e.preventDefault();
+			
+			let output=[];
+			$('select option').each(function(){
+				if($(this).prop('selected')==true){
+					output.push(`게시판종류 : ${$(this).val()}<br>`);
+				}
+				else{
+					//선택되지 않았을 떄
+				}
+			});
+			$('input:checked').each(function(index, item){
+				output.push(`검색항목 :${$(item).val()}<br>`);
+			});
+			output.push(`검색어 : ${$('input:text').val()}<br>`);
+			$('#result').html(output);
+		});  */
+ 		
+		//3번쨰 방법 화살표함수
+ 		 $("#searchform").on('submit',e => {
+ 			e.preventDefault();
+ 			
+ 			let output=[];
+ 			$('select option').each((index, item) => {
+ 				//화살표 함수에서 this 는 현재 반복중인 객체가 아니라 상위객체 document.querySelector("")
+ 				//화살표 함수에서 매개변수 필요
+ 				if($(item).prop('selected')==true){
+ 					output.push(`게시판종류 : ${$(item).val()}<br>`);
+ 				}
+ 				else{
+ 					//선택되지 않았을 떄
+ 				}
+ 			});
+ 			$('input:checked').each((index, item) => {
+ 				output.push(`검색항목 :${$(item).val()}<br>`);
+ 			});
+ 			output.push(`검색어 : ${$('input:text').val()}<br>`);
+ 			$('#result').html(output);
+ 		}); 
+		
+ 	} );
+</script>
+</head>
+<body>
+<h1> 검색 대상과 검색어를 입력하세요.</h1>
+<form action="a.jsp" id="searchform" >
+	<select>
+	<option>공지사항</option>
+	<option selected>뉴스</option>
+	<option>커뮤니티</option>
+	</select>
+	<input type="checkbox" value="제목" id="checkbox1">제목
+	<input type="checkbox" value="내용" id="checkbox2">내용
+	<input type="checkbox" value="작성자" id="checkbox3">작성자
+	<input type=text value="검색어를 입력하세요">		 
+	<input type="submit" value="검색">
+</form>
+<div id=result>여기에 결과가 보여요</div>
+</body>
+<!-- 
+1. 검색 버튼 클릭시 result id 태그 출력(submit동작x)
+ 	게시판종류 : xxxx
+ 	검색항목 : checkbox 선택 항목 value값
+ 	검색어 : xxxx
+ 		   
+
+ -->
+</html>

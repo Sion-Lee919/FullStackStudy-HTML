@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+ 	$(document).ready( function(){ 
+ 		//src-(동일)html5.jpg 이미지 동일 4개 이미지
+ 		//width, height-(다름) 100,200,300,400
+ 		//배열형태. setter(4개 모두)-내부적 반복중
+ 		$("img").attr({
+ 			"src":"http://localhost:8080/HTML1/images/html5.jpg",
+ 			width:function(index){return(index+1)*100;}, //반복중인 img 인덱스- 0~...
+ 			height:function(index){return(index+1)*100;}
+ 		});
+ 		
+ 		//img 태그의 src, width, heigt 추출 조회 getter용도
+ 		$("div").html($("img").attr("width")); //1번째꺼만 읽어옴
+ 		
+ 		//4개 조회
+ 		let result1 =``;
+ 		for(let i=0; i<$("img").length; i++){
+ 			result1 += `src= ${$("img")[i].src}, width=${$("img")[i].width}, height= ${$("img")[i].height}<br>`;
+ 		}
+ 		
+ 		$("div").html(result1);
+ 		
+ 		//jquery 객체 반복메소드 each()
+ 		let result2=``;
+ 		$('img').each(function(index, item){
+ 			result2 += `${index} 번째의 태그의 src= ${item.src}, width= ${item.width}, height=${item.height}<br>`;
+ 		});
+ 		
+ 		$("div").html(result2);
+ 		
+ 		//jquery 객체 반복 setter
+ 		//$().함수명("속성명",funcion(){return x;});
+ 		//jquery 객체 반복 getter
+ 		//$().each(funcion(index, item){ return문 없다;....});
+ 		
+ 		
+ 	//jquery선택 객체는 배열처럼 취급(1개만 리턴)
+ 	/* alert($(document).length);
+ 	alert($("img").length); //4
+ 	alert($("img:first").length); */
+ 	
+ 	
+ } );
+ 	
+
+</script>
+</head>
+<body>
+<img>
+<img>
+<img>
+<img>
+<div></div>
+</body>
+</html>
