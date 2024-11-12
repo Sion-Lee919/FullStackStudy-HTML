@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+ 	$(document).ready( function(){ 
+ 		$("div:eq(0)").html('<h1>새로운 내용으로 변경</h1>');//setter
+ 		//$("div:eq(0)").html();//getter
+ 		
+ 		//$("div:eq(0)").html($("div:eq(0)").html() + '<h1>두번째 새로운 내용으로 변경</h1>');//getter + setter=append
+ 		
+ 		$("div:eq(0)").append('<h1>두번째 새로운 내용으로 변경</h1>');
+ 		
+ 		//$("div:eq(1)").text('<h1>새로운 내용으로 변경</h1>');//setter
+ 		//alert($("div:eq(1)").text());//getter
+ 		
+ 		
+ 		//output 제외 모든 div 태그의 컨텐츠 출력
+ 		
+ 		$('div').not($('div:last')).each(function(i,j){
+ 			$("#output").append(i + "번쨰 인덱스의 div 내용=" + $(j).html()+"<br>")
+ 		});
+ 	
+ 	} );
+</script>
+</head>
+<body>
+<div>1번째 div</div>
+<div>2번째 div</div>
+<div>3번째 div</div>
+<div>4번째 div</div>
+<div>5번째 div</div>
+<div id="output">aaaa</div>
+
+</body>
+</html>

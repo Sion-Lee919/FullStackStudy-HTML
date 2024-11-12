@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+/* 6개 클래스명 css 정의 */
+.highlight0{
+	background-color: yellow;
+	width: 300px;
+}
+
+.highlight1{
+	background-color: orange;
+	width: 400px;
+}
+
+.highlight2{
+	background-color: gray;
+	width: 500px;
+}
+
+.highlight3{
+	background-color: pink;
+	width: 100px;
+}
+
+.highlight4{
+	background-color: lime;
+	width: 200px;
+}
+
+.highlight5{
+	background-color: olive;
+	width: 300px;
+}
+
+</style>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+ 	$(document).ready( function(){ 
+ 		//$('h1').addClass('highlight0');
+ 		//$('h1').removeClass('highlight0');
+ 		$('h1').each(function(index, item){
+ 			//$(item).addClass('highlight'+index);
+ 			//class 속성 지정되어 있다면 remove, 지정되어있지 않다면 add
+ 			$(item).toggleClass('highlight'+index);
+ 		});
+ 	} );
+</script>
+</head>
+<body>
+<h1 class='highlight0'>item0</h1>
+<h1>item1</h1>
+<h1>item2</h1>
+<h1>item3</h1>
+<h1>item4</h1>
+<h1>item5</h1>
+</body>
+</html>

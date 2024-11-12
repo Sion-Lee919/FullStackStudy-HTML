@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.7.1.min.js"></script>
+<!-- jquery 이벤트 처리 -->
+<script>
+ 	$(document).ready( function(){ 
+ 		
+ 		let imgurl="/HTML1/images/";
+ 		let imgs=[
+ 		"americano.jpg",
+ 		"blackcoffee.gif",
+ 		"cafelatte.jpg",
+ 		"cappuccino.jpg",
+ 		"coffee.gif",
+ 		"drinks.jpg"];
+ 		
+ 		let count =0;
+ 		let timerid;
+ 	 	$("#startbtn").on('click',function(){
+ 	 		$('div').html("이제부터 이지미를 동적으로 변경합니다.")
+ 	 		//#startbtn value 값 getter용도 div 추가출력 해보기
+ 	 		$('div').append($('#startbtn').val());
+ 	 		//#startbtn value 값 setter용도 변경 이미지시작중입니다 해보기
+ 	 		$('#startbtn').val('이미지시작중입니다');
+ 	 			$("img").attr('width',200);
+ 	 			$("img").attr('height',200);
+ 	 		timerid = setInterval(function(){
+ 	 			$("img").attr('src',imgurl+imgs[count % imgs.length]);
+ 	 			count++
+ 	 		},1000);
+ 	 	});//click end
+ 	 	
+ 	 	$("#stopbtn").on('click',function(){
+ 	 		$('div').html("이제부터 이지미를 동적으로 변경 중단합니다.")
+ 	 		clearInterval(timerid);
+ 	 	});//click end end
+ 	} );//ready end
+
+</script>
+</head>
+<body>
+
+
+<input type="button" value="이미지시작" id="startbtn">
+<input type="button" value="이미지종료" id="stopbtn">
+<br>
+<div></div>
+<img>
+</body>
+
+<!-- 자바스크립트이벤트처리
+ 		1. startbtn 클릭하면 
+ 		1-1. div 태그에 이제부터 이미지를 동적으로 변경합니다. 출력
+ 		1-2. 1초마다 한번씩 (setInterval) img 태그 width 200px, height 200px,  src 속성을 변경하여 이미지 동적 변경
+ 		
+ 		2. stopbtn 클릭하면 
+ 		2-1. div 태그에 이미지를 동적으로 변경 중단합니다. 출력
+ 		2-2.이미지 동적 변경 중단(clearInterval)  -->
+
+<!-- 
+/HTML1/images/americano.jpg
+/HTML1/images/blackcoffe.jpg
+/HTML1/images/cafelatte.jpg
+/HTML1/images/cappuccino.jpg
+/HTML1/images/coffee.gif
+/HTML1/images/drinks.jpg
+ -->
+</html>

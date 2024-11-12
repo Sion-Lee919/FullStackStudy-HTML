@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+ 	$(document).ready( function(){ 
+ 		$('#box').css({
+ 			height:"100px",
+ 			width:"100px",
+ 			backgroundColor:"orange"
+ 		});//css
+ 		
+ 		$('#box').on({
+ 			click : function(){$('#box').css("background-color",'yellow');},
+ 			mouseenter : function(){$('#box').css("background-color",'green');},
+ 			mouseout : function(){$('#box').css("background-color",'pink');}
+ 		});
+ 		
+ 	} );
+</script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
