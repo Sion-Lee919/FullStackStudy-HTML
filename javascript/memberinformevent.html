@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="member.jsp">
+	<label for="id">아이디입력</label><input type="text" id="id"><input type="button" id="checkidbtn" value="아이디중복검사"><br>
+	<label for="pw1">암호입력</label><input type="password" id="pw1"><input type="password" id="pw2"><input type="button" id="checkpwbtn" value="암호동일검사"><br>
+	<label for="pw1">학습한 과목 선택</label>
+	<input type="checkbox" id="subject" name="subject" value="html">html
+	<input type="checkbox" id="subject" name="subject" value="css">css
+	<input type="checkbox" id="subject" name="subject" value="javascript" checked>javascript
+	<input type="checkbox" id="subject" name="subject" value="java">java
+	<input type="checkbox" id="subject" name="subject" value="database">database
+	<input type="checkbox" id="subject" name="subject" value="spring framework">spring framework
+	<input type="button" id="selectsubject" value="선택과목확인">
+	<br>
+	<input type="submit" value="회원정보전송">
+</form>
+<div id="output"></div>
+
+<script>
+/*
+let memberlist = ["front","back","fullstack",""];
+1.아이디중복검사 클릭시 입력 아이디값이 memberlist 배열에 있는 요소와 
+중복되면 "해당 아이디는 이미 존재합니다. 다른 아이디를 입력하세요" 를 div 태그에 출력
+중복되지 않으면 memberlist에 아이디 추가하여 memberlist 전체 아이디 출력
+2.암호동일검사 클릭시 2개의 입력 암호값 동일확인 비교.
+동일하지 않으면 "암호를 다시 입력하세요." 출력
+3.선택과목확인 클릭시 사용자가 선택한 과목들 (배열 이용 가능) 모두 출력
+4.회원정보전송 클릭시 아이디, 암호 입력되지 않거나 학습한 과목에서 html, css 요소 선택되지 않으면 member.jsp 이동 불가 
+*/
+/* let memberlist = ["front","back","fullstack"];
+let id = document.getElementById("id");
+let checkidbtn = document.getElementById("checkidbtn");
+
+checkidbtn.addEventListener('click', function(){
+	memberlist.push(id.value);
+	for(let i=0; i<memberlist.length; i++){
+		if(memberlist[i].value == id.value){
+		alert('해당 아이디는 이미 존재합니다. 다른 아이디를 입력하세요')
+	}
+		else{
+			document.getElementById("output").innerHTML += `${memberlist[i]}<br>`;
+		};
+	};
+}); */
+//답지
+let memberlist = ["front","back","fullstack"];
+let checkidbtn = document.querySelector("#checkidbtn"); //아이디 중복
+let checkpwbtn = document.querySelector("#checkpwbtn"); //암호 동일검사
+let selectsubject =document.querySelector("#selectsubject"); // 선택과목확인
+let form = document.querySelector("form");
+let div = document.querySelector("#output");
+
+checkidbtn.addEventListener('click', function(){
+	let id = document.querySelector("#id");
+	let isSame = false;
+	for(let i=0; i<memberlist.length; i++){
+		if(id.value == memberlist[i]){
+			isSame = true;//중복
+			break;
+		}
+	}
+	if(isSame == true){
+		div.innerHTML = "해당 아이디는 이미 존재합니다. 다른 아이디를 입력하세요";
+		id.focus();
+		id.value="";
+	}
+	else{
+		memberlist.push(id.value);
+		div.innerHTML="";
+		for(p in memberlist){
+			div.innerHTML += `<h5>${memberlist[p]}</h5>`;
+		}
+	}
+});
+
+checkpwbtn.addEventListener('click', function(){
+	let pw1 = document.querySelector("#pw1");
+	let pw2 = document.querySelector("#pw2");
+	if(pw1.value != pw2.value){
+		div.innerHTML = "암호를 다시 입력하세요.";
+		pw1.focus();
+		pw1.value="";
+		pw2.value="";
+	}
+});
+
+selectsubject.addEventListener('click', function(){
+	let subjectlist = document.querySelectorAll("input[type=checkbox]:checked")
+	div.innerHTML="선택된과목들";
+	for(let i = 0; i<subjectlist.length; i++){
+		div.innerHTML += subjectlist[i].value;
+	}
+});
+
+form.addEventListener('submit', function(e){
+	let subjectlist = document.querySelectorAll("input[type=checkbox]:checked")
+	let exists = false, exists2 = false;
+	  if(id.value=="" || pw1.value == "" || pw2.value == ""){
+		e.preventDefault();
+	}  
+	//html 포함하지 않으면 e.preventDefault();
+ 	for(let i = 0; i<subjectlist.length; i++){
+	if(subjectlist[i].value == "html" ){
+		exists = true;
+	}
+	if(subjectlist[i].value == "css" ){
+		exists2 = true;
+	}
+	}
+	if(exists== false || exists2== false){
+		e.preventDefault(); }
+	
+
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

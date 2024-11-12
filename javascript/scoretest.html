@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+/* let a = prompt("국어 점수을 입력하세요")
+     if(a<=100 && a>=0){
+    		
+}
+     else{
+    	 document.write('<h3 style="color:red">점수 계산이 불가합니다</h3>');
+    	 exit()
+}
+ 
+ 
+let b = prompt("수학 점수을 입력하세요")
+    if(b<=100 && b>=0){
+   		
+}
+    else{
+   	 document.write('<h3 style="color:red">점수 계산이 불가합니다</h3>');
+   	exit()
+}
+
+
+let c = prompt("영어 점수을 입력하세요")
+    if(c<=100 && c>=0){
+   		
+}
+    else{
+   	 document.write('<h3 style="color:red">점수 계산이 불가합니다</h3>');
+   	exit()
+}
+let set = confirm("위의 점수를 공개하시겠습니까?");
+if (set = true) { 
+	let d=(a*0.1);
+	let e=(b*0.1); 
+	let f=(c*0.1);
+	document.write(a,b,c);
+	document.write(d,e,f);
+	document.write('<h3>총점='+ a+d +'</h3>');
+	document.write('<h3>총점='+ b+e +'</h3>');
+	document.write('<h3>총점='+ c+f +'</h3>');
+}
+else {
+	let d=(0);
+	let e=(0); 
+	let f=(0);
+	document.write(d,e,f);
+} */
+let kor, eng, mat, sum, avg, grade, isOpen;
+let isKor = false, isMat = false, isEng = false;
+
+//prompt 타입은 string
+kor = prompt("국어점수 입력하세요");
+mat = prompt("수학점수 입력하세요");
+eng = prompt("영어점수 입력하세요");
+
+kor = parseInt(kor)
+mat = parseInt(mat)
+eng = parseInt(eng)
+
+if(/* Number.inInteger(kor) && */ kor >=0 && kor <=100){
+	isKor = true;
+}
+if(/* Number.inInteger(mat) &&*/ mat  >=0 && mat <=100){
+	isMat = true;
+}
+if(/* Number.inInteger(eng) &&  */eng >=0 && eng <=100){
+	isEng = true;
+}
+if(isKor == false || isMat == false || isEng == false){
+	document.write("<h3 style=\"color:red\">점수 계산이 불가합니다" + isKor +':'+isMat+':'+isEng+':'+"</h3>");	
+}
+else{
+	isOpen = confirm("위의 점수를 공개하시겠습니까?")
+	if(isOpen){
+		if(kor*1.1 >100 ){
+			kor = 100;
+		}
+		else{
+		kor = kor*1.1;
+		}
+		if(mat*1.1 >100 ){
+			mat = 100;
+		}
+		else{
+			mat = mat*1.1;
+		}
+		if(eng*1.1 >100 ){
+			eng = 100;
+		}
+		else{
+			eng = eng*1.1;
+}
+}}
+
+sum = kor + mat + eng; 
+avg = parseInt(sum/3);
+if(avg>=80){
+	grade = "우수";
+}
+else if(avg>=60 && avg<80){
+	grade="보통";
+}
+else if(avg>=40 && avg<60){
+	grade="노력";
+}
+else{
+	grade="많이 분발";
+}
+let tabletag="<table border='3'>"
++"<tr><td>국어</td><td>"+kor+"</td></tr>"
++"<tr><td>수학</td><td>"+mat+"</td></tr>"
++"<tr><td>영어</td><td>"+eng+"</td></tr>"
++"<tr><td>총점</td><td>"+sum.toFixed(2)+"</td></tr>"
++"<tr><td>평균</td><td>"+avg+"</td></tr>"
++"<tr><td>등급</td><td>"+grade+"</td></tr>"
++"</table>";
+document.write(tabletag);
+
+/* `문자데이터 표현 기호 중 하나. ecma script 6부터 추가됨`;
+${변수명}*/
+ let tabletag2 = `<table border='3'>
+	 <tr><td>국어</td><td>${kor}</td></tr>
+	 <tr><td>수학</td><td>${mat}</td></tr>
+	 <tr><td>영어</td><td>${eng}</td></tr>
+	 <tr><td>총점</td><td>${sum.toFixed(2)}</td></tr>
+	 <tr><td>평균</td><td>${avg}</td></tr>
+	 <tr><td>등급</td><td>${grade}</td></tr>
+	 </table>`;
+ document.write(tabletag2);
+</script>
+
+</body>
+</html>
